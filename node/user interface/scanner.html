@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Vulnerability Scanner</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="nav-wrapper grey lighten-0">
+        <a href="#" class="brand-logo"><img src="icon.png" width="65" height="65" alt="User Image"></a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href=dashboard.html>Dashboard</a></li><!-- Link to Home Page -->
+            <li><a href="quiz.html">Quiz</a></li> <!-- Link to Quiz Page -->
+            <li><a href="flashcard.html">Flashcard</a></li> <!-- Link to Flashcard Page -->
+            <li><a href="scanner.html">Scanner</a></li> <!-- Link to Scanner Page -->
+            <li><a href="feedback.html">Feedback</a></li> <!-- Link to Feedback Page -->
+            <img src="user-image.jpg" width="65" height="65" alt="User Image"></a>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h1>URL Vulnerability Scanner</h1>
+        <p>Enter a URL to scan for vulnerabilities.</p>
+
+        <div class="row">
+            <form id="scan-form" class="col s12">
+                <div class="input-field">
+                    <input id="url" type="text" class="validate" required>
+                    <label for="url">URL to Scan</label>
+                </div>
+                <button type="submit" class="btn waves-effect waves-light">Scan URL</button>
+            </form>
+        </div>
+
+        <div id="scan-result" class="card-panel hidden">
+            <h5>Scan Results</h5>
+            <pre id="result-output"></pre>
+        </div>
+    </div>
+
+    <!-- Socket.io -->
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const socket = io();
+
+        // Handle form submission
+        const scanForm = document.getElementById('scan-form');
+        scanForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const urlInput = document.getElementById('url').value;
+
+            // Emit scan request with the URL
+            socket.emit('scanURL', { url: urlInput });
+
+            // Show the scan results panel
+            document.getElementById('scan-result').classList.remove('hidden');
+            document.getElementById('result-output').textContent = 'Scanning... Please wait...';
+        });
+
+        // Listen for scan results and display them
+        socket.on('scanResult', (result) => {
+            const resultOutput = document.getElementById('result-output');
+            resultOutput.textContent = result;
+        });
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+</html>

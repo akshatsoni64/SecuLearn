@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="nav-wrapper grey lighten-0">
+        <a href="#" class="brand-logo"><img src="icon.png" width="65" height="65" alt="User Image"></a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href=dashboard.html>Dashboard</a></li><!-- Link to Home Page -->
+            <li><a href="quiz.html">Quiz</a></li> <!-- Link to Quiz Page -->
+            <li><a href="flashcard.html">Flashcard</a></li> <!-- Link to Flashcard Page -->
+            <li><a href="scanner.html">Scanner</a></li> <!-- Link to Scanner Page -->
+            <li><a href="feedback.html">Feedback</a></li> <!-- Link to Feedback Page -->
+            <img src="user-image.jpg" width="65" height="65" alt="User Image"></a>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <h1>Dashboard</h1>
+        
+        <!-- Summary Cards -->
+        <div class="row">
+            <div class="col s12 m4">
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title">Total Users</span>
+                        <p>1500</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col s12 m4">
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title">Feedback Received</span>
+                        <p>75</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chart Section -->
+        <div class="row">
+            <div class="col s12">
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title">User Growth</span>
+                        <canvas id="userGrowthChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Table Section -->
+        <div class="row">
+            <div class="col s12">
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title">Recent Feedback</span>
+                        <table class="highlight">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Feedback</th>
+                                    <th>Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Test 1</td>
+                                    <td>Great platform!</td>
+                                    <td>2025-01-20</td>
+                                </tr>
+                                <tr>
+                                    <td>Test 2</td>
+                                    <td>Needs improvement in UI.</td>
+                                    <td>2025-01-19</td>
+                                </tr>
+                                <tr>
+                                    <td>Test 2  </td>
+                                    <td>Love the new features!</td>
+                                    <td>2025-01-18</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chart.js for Charts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Example Chart with 12 Months
+        const ctx = document.getElementById('userGrowthChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                datasets: [{
+                    label: 'User Growth',
+                    data: [500, 700, 1000, 1200, 1400, 1500, 1600, 1700, 1900, 2100, 2300, 2500],
+                    borderColor: 'blue',
+                    borderWidth: 2,
+                    fill: false
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+</html>
