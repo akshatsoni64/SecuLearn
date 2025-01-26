@@ -1,4 +1,4 @@
-const User = require("./model/socket");
+const User = require("../model/user");
 
 class UserController {
   constructor() {}
@@ -7,6 +7,7 @@ class UserController {
     console.log("\nPOST:", request.originalUrl, new Date(), "Adding User");
     console.log(request.body);
     const user = new User({
+      name: request.body.name,
       username: request.body.username,
       password: request.body.password,
     });

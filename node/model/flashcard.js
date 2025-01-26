@@ -3,15 +3,15 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 // create Schema
-const UserSchema = new Schema({
-    username: {
+const FlashCardSchema = new Schema({
+    title:{
         type: String,
         required: true
     },
-    password: {
+    description: {
         type: String,
         required: true
     },
 });
 
-module.exports = User = mongoose.model('user', UserSchema);
+module.exports = FlashCard = mongoose.model('flashcard', FlashCardSchema);

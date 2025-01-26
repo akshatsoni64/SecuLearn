@@ -10,10 +10,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.21.1",
     "cors": "^2.8.5",
-    "mongoose": "^5.12.9",
+    "express": "^4.21.1",
     "materialize-css": "^1.0.0-rc.2",
+    "mongoose": "^5.12.9",
+    "mongoose-uuid-ts": "^1.0.4",
     "path": "^0.12.7"
   }
 }
