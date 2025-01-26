@@ -24,5 +24,12 @@ class ResultController {
       response.json(Results);
     });
   }
+
+  delResult(request, response){
+    console.log("\nDELETE:", request.originalUrl, new Date(), "Deleting Result");
+    Result.findByIdAndDelete(request.body.id).then((result) => {
+      response.json(result);
+    });
+  }
 }
 module.exports = ResultController;

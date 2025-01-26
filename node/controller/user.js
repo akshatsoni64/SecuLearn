@@ -24,6 +24,13 @@ class UserController {
     });
   }
 
+  delUser(request, response){
+    console.log("\nDELETE:", request.originalUrl, new Date(), "Deleting User");
+    User.findByIdAndDelete(request.body.id).then((user) => {
+      response.json(user);
+    });
+  }
+
   authenticate(request, response){
     console.log("\nPOST:", request.originalUrl, new Date(), "Authenticating User");
     const username = request.body.username;

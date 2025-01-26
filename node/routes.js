@@ -7,23 +7,22 @@ const quizController = require("./controller/quiz");
 const flashcardController = require("./controller/flashcard");
 const userController = require("./controller/user");
 
-console.log(controller)
+router.post('/user', new userController().addUser);
+router.get('/user', new userController().getUsers);
+router.delete('/user', new userController().delUser);
+router.post('/auth', new userController().authenticate);
 
-router.post('user/', new userController().addUser);
-router.get('user/', new userController().getUsers);
-router.post('auth/', new userController().authenticate);
+router.post('/topic', new topicController().addTopic);
+router.get('/topic', new topicController().getTopics);
 
-router.post('topic/', new topicController().addTopic);
-router.get('topic/', new topicController().getTopics);
+router.post('/result', new resultController().addResult);
+router.get('/result', new resultController().getResults);
 
-router.post('result/', new resultController().addResult);
-router.get('result/', new resultController().getResults);
+router.post('/quiz', new quizController().addQuiz);
+router.get('/quiz', new quizController().getQuizs);
 
-router.post('quiz/', new quizController().addQuiz);
-router.get('quiz/', new quizController().getQuizs);
-
-router.post('flashcard/', new flashcardController().addFlashCard);
-router.get('flashcard/', new flashcardController().getFlashCards);
+router.post('/flashcard', new flashcardController().addFlashCard);
+router.get('/flashcard', new flashcardController().getFlashCards);
 
 
 module.exports = router;

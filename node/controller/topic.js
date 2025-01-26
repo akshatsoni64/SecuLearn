@@ -23,5 +23,12 @@ class TopicController {
       response.json(topics);
     });
   }
+
+  delTopic(request, response){
+    console.log("\nDELETE:", request.originalUrl, new Date(), "Deleting Topic");
+    Topic.findByIdAndDelete(request.body.id).then((topic) => {
+      response.json(topic);
+    });
+  }
 }
 module.exports = TopicController;

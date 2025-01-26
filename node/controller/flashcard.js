@@ -22,5 +22,12 @@ class FlashCardController {
       response.json(flashcards);
     });
   }
+
+  delFlashCard(request, response){
+    console.log("\nDELETE:", request.originalUrl, new Date(), "Deleting FlashCard");
+    FlashCard.findByIdAndDelete(request.body.id).then((flashcard) => {
+      response.json(flashcard);
+    });
+  }
 }
 module.exports = FlashCardController;

@@ -27,5 +27,12 @@ class QuizController {
       response.json(quizzes);
     });
   }
+
+  delQuiz(request, response){
+    console.log("\nDELETE:", request.originalUrl, new Date(), "Deleting Quiz");
+    Quiz.findByIdAndDelete(request.body.id).then((quiz) => {
+      response.json(quiz);
+    });
+  }
 }
 module.exports = QuizController;
