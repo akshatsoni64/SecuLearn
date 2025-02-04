@@ -32,7 +32,7 @@ FROM nginx:1.25.3-alpine-slim
 COPY nginx.conf /etc/nginx/nginx.conf
 
 # Copy the built Angular app from the 'calipharma' image to the NGINX HTML directory
-COPY --from=build /app/dist/demo /usr/share/nginx/html
+COPY --from=build /app/dist/seculearn-frontend /usr/share/nginx/html
 
 # Specify the command to run NGINX in the foreground
 CMD ["nginx", "-g", "daemon off;"]
