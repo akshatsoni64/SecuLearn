@@ -1,4 +1,5 @@
 const Quiz = require("../model/quiz");
+const Topic = require("../model/topic");
 
 class QuizController {
   constructor() {}
@@ -6,7 +7,7 @@ class QuizController {
   addQuiz(request, response) {
     console.log("\nPOST:", request.originalUrl, new Date(), "Adding Quiz");
     console.log(request.body);
-    const Quiz = new Quiz({
+    const quiz = new Quiz({
       topic_id: request.body.topic_id,
       question: request.body.question,
       option_1: request.body.option_1,
@@ -16,19 +17,19 @@ class QuizController {
       correct_option: request.body.correct_option,
     });
 
-    Quiz.save().then((quizzes) => {
+    quiz.save().then((quizzes) => {
       response.json(quizzes);
     });
   }
 
-  getQuizs(request, response){
+  getQuizs(request, response) {
     console.log("\nGET:", request.originalUrl, new Date(), "Getting Quizzes");
     Quiz.find().then((quizzes) => {
       response.json(quizzes);
     });
   }
 
-  delQuiz(request, response){
+  delQuiz(request, response) {
     console.log("\nDELETE:", request.originalUrl, new Date(), "Deleting Quiz");
     Quiz.findByIdAndDelete(request.body.id).then((quiz) => {
       response.json(quiz);

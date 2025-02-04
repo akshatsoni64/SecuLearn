@@ -6,14 +6,14 @@ class ResultController {
   addResult(request, response) {
     console.log("\nPOST:", request.originalUrl, new Date(), "Adding Result");
     console.log(request.body);
-    const Result = new Result({
+    const result = new Result({
       id: request.body.id,
       question_id: request.body.question_id,
       user_id: request.body.user_id,
       status: request.body.status,
     });
 
-    Result.save().then((Result) => {
+    result.save().then((Result) => {
       response.json(Result);
     });
   }

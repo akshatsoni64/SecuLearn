@@ -6,13 +6,13 @@ class TopicController {
   addTopic(request, response) {
     console.log("\nPOST:", request.originalUrl, new Date(), "Adding Topic");
     console.log(request.body);
-    const Topic = new Topic({
+    const topic = new Topic({
       id: request.body.id,
       name: request.body.name,
       description: request.body.description,
     });
 
-    Topic.save().then((topic) => {
+    topic.save().then((topic) => {
       response.json(topic);
     });
   }

@@ -1,0 +1,14 @@
+<mat-accordion>
+  <mat-expansion-panel *ngFor="let quiz of quizs | async" (opened)="panelOpenState.set(true)" (closed)="panelOpenState.set(false)">
+    <mat-expansion-panel-header>
+      <mat-panel-title> {{quiz.question}} </mat-panel-title>
+      <mat-panel-description>
+        Click to open!
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <p>{{quiz.option_1}}</p>
+    <p>{{quiz.option_2}}</p>
+    <p>{{quiz.option_3}}</p>
+    <p>{{quiz.option_4}}</p>
+  </mat-expansion-panel>
+</mat-accordion>

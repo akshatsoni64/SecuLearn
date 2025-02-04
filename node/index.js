@@ -1,33 +1,27 @@
-const express = require('express')
-// const bodyParser = require('body-parser')
-const app = express()
-const path = require('path');
-const port = 3000
-// var cors = require('cors')
-// const notes = require('./api/routes/notes')
-// const labels = require('./api/routes/labels')
+const express = require("express");
+const app = express();
+const routes = require("./routes");
+const port = 3000;
 
-var mongoose = require('mongoose')
+var mongoose = require("mongoose");
 var key = process.env.ME_CONFIG_MONGODB_URL;
-console.log("Key:", key);
-const routes = require('./routes')
+// console.log("Key:", key);
 
 mongoose
-.connect(key, { useNewUrlParser: true })
-.then(() => {
+  .connect(key, { useNewUrlParser: true })
+  .then(() => {
     console.log("MongoDB Connected");
-})
-    .catch((err) => {
-        console.log(err);
-    })
-    
-    
-// app.use(cors())
-// app.use(bodyParser.json());
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
+var cors = require('cors')
+app.use(cors())
 
 app.use(express.json());
-app.use('', routes);
+app.use("", routes);
+
 /**
 
 app.get('/api/v1/hello/', (req, res) => {
@@ -41,5 +35,6 @@ app.get('/', (req, res) => {
 **/
 
 app.listen(port, () => {
-    console.log(`Server is running at http://localhost:${port}`);
+  console.log(`Server is running at http://localhost:${port}`);
 });
+

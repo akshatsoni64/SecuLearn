@@ -1,0 +1,14 @@
+<!-- <p *ngFor="let card of flashcards | this.flashcards = this.service.getFlashcards();">{{card.title}}</p> -->
+<h2>Flashcards</h2>
+
+<mat-accordion>
+  <mat-expansion-panel *ngFor="let card of flashcards | async" (opened)="panelOpenState.set(true)" (closed)="panelOpenState.set(false)">
+    <mat-expansion-panel-header>
+      <mat-panel-title> {{card.title}} </mat-panel-title>
+      <mat-panel-description>
+        Click to open!
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <p>{{card.description}}</p>
+  </mat-expansion-panel>
+</mat-accordion>

@@ -1,4 +1,4 @@
-version: '3.8'
+version: "3.8"
 
 services:
   # MongoDB service
@@ -13,10 +13,10 @@ services:
       - "27017:27017"
     volumes:
       - mongo-data:/data/db
-    command: ["mongod", "--bind_ip", "0.0.0.0"] 
+    command: ["mongod", "--bind_ip", "0.0.0.0"]
     networks:
       - app-network
-  
+
   # Node.js service
   node-app:
     build:
@@ -33,7 +33,9 @@ services:
       - mongo
     networks:
       - app-network
-    command: ["npm", "run", "dev"]  
+    volumes:
+      - ./node:/usr/src/app
+    command: ["npm", "run", "dev"]
 
 # Define the network for both services to communicate
 networks:

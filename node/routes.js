@@ -20,9 +20,9 @@ router.get('/result', new resultController().getResults);
 
 router.post('/quiz', new quizController().addQuiz);
 router.get('/quiz', new quizController().getQuizs);
+router.delete('/quiz', new quizController().delQuiz);
 
 router.post('/flashcard', new flashcardController().addFlashCard);
 router.get('/flashcard', new flashcardController().getFlashCards);
-
 
 module.exports = router;
