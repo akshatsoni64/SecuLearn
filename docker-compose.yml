@@ -17,7 +17,18 @@ services:
     networks:
       - app-network
 
-  # Node.js service
+  # Angular Frontend service
+  ng-app:
+    build:
+      context: ./seculearn-frontend/
+    container_name: node-app
+    ports:
+      - "8000:80"
+    restart: always
+    networks:
+      - testnet
+  
+  # Node.js Backend service
   node-app:
     build:
       context: ./node/
