@@ -1,7 +1,11 @@
 const { exec } = require("child_process");
 
 class ScanController {
-  constructor() {}
+  constructor() {
+    this.formatNmapOutput = this.formatNmapOutput.bind(this)
+    this.scanUtil = this.scanUtil.bind(this)
+    this.scan = this.scan.bind(this)
+  }
   async scan(req, res) {
     const target = req.body.target;
 

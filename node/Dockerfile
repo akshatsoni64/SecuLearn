@@ -1,6 +1,9 @@
 # Use official Node.js image as the base
 FROM node:18
 
+# Install Nmap
+RUN apt-get update && apt-get install -y nmap
+
 # Set the working directory inside the container
 WORKDIR /usr/src/app
 
