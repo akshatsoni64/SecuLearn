@@ -36,3 +36,4 @@ class ScanController {
       .join("\n");
   }
 }
+module.exports = ScanController;
