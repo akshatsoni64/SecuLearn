@@ -6,6 +6,7 @@ const resultController = require("./controller/result");
 const quizController = require("./controller/quiz");
 const flashcardController = require("./controller/flashcard");
 const userController = require("./controller/user");
+const scanController = require("./controller/scanner");
 
 router.post('/user', new userController().addUser);
 router.get('/user', new userController().getUsers);
@@ -32,5 +33,6 @@ router.get('/flashcard/:id', new flashcardController().getFlashCards);
 router.get('/flashcard', new flashcardController().getFlashCards);
 
 router.get('/leaderboard', new resultController().getLeaderboard);
+router.post('/scan', new scanController().scan);
 
 module.exports = router;
