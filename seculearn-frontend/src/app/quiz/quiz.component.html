@@ -1,14 +1,32 @@
-<mat-accordion>
-  <mat-expansion-panel *ngFor="let quiz of quizs | async" (opened)="panelOpenState.set(true)" (closed)="panelOpenState.set(false)">
-    <mat-expansion-panel-header>
-      <mat-panel-title> {{quiz.question}} </mat-panel-title>
-      <mat-panel-description>
-        Click to open!
-      </mat-panel-description>
-    </mat-expansion-panel-header>
-    <p>{{quiz.option_1}}</p>
-    <p>{{quiz.option_2}}</p>
-    <p>{{quiz.option_3}}</p>
-    <p>{{quiz.option_4}}</p>
-  </mat-expansion-panel>
-</mat-accordion>
+<h2>Quiz</h2>
+<form>
+  <mat-accordion >
+    <mat-expansion-panel *ngFor="let quiz of quizs | async" (opened)="panelOpenState.set(true)"
+      (closed)="panelOpenState.set(false)">
+      <mat-expansion-panel-header>
+        <mat-panel-title><mat-chip-set>
+            <mat-chip style="background-color: greenyellow;">{{quiz.topic}}</mat-chip>
+          </mat-chip-set> </mat-panel-title>
+        <mat-panel-description>
+          {{quiz.question}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <div style="display:grid; grid-template-columns: auto auto;">
+        <mat-radio-group [id]="quiz._id" aria-label="Select an option" (change)="change($event, quiz._id, quiz.correct_option)">
+          <mat-radio-button value="option_1">{{quiz.option_1}}</mat-radio-button>
+          <mat-radio-button value="option_2">{{quiz.option_2}}</mat-radio-button>
+          <mat-radio-button value="option_3">{{quiz.option_3}}</mat-radio-button>
+          <mat-radio-button value="option_4">{{quiz.option_4}}</mat-radio-button>
+        </mat-radio-group>
+      </div>
+    </mat-expansion-panel>
+
+  </mat-accordion>
+  <br>
+
+  <div style="display:grid; grid-template-columns: auto auto">
+    <span routerLink="/flashcards" style="text-align: center; color: darkorange" routerLinkActive="active">Need more
+      prep?<mat-icon>description</mat-icon></span>
+    <div><button (click)="check()" mat-raised-button>Submit</button></div>
+  </div>
+</form>

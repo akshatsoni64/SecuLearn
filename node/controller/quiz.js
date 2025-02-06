@@ -22,11 +22,50 @@ class QuizController {
     });
   }
 
-  getQuizs(request, response) {
+  async getQuizs(request, response) {
     console.log("\nGET:", request.originalUrl, new Date(), "Getting Quizzes");
-    Quiz.find().then((quizzes) => {
-      response.json(quizzes);
-    });
+    if (request.params.id) {
+      await Quiz.findById(request.params.id)
+        .lean()
+        .exec((err, quiz) => {
+          Topic.findById(quiz.topic_id)
+            .lean()
+            .exec((err, topic) => {
+              delete quiz.topic_id;
+              quiz.topic = topic.name;
+              response.json(quiz);
+            });
+        });
+    } else {
+      await Quiz.find()
+        .lean()
+        .exec(async (err, quizzes) => {
+          await Promise.all(
+            quizzes.map(async (quiz) => {
+              return new Promise((resolve, reject) => {
+                Topic.findById(quiz.topic_id)
+                  .lean()
+                  .exec((err, topic) => {
+                    if (err) {
+                      reject(err); // reject if error occurs
+                    } else {
+                      delete quiz.topic_id;
+                      quiz.topic = topic.name;
+                      resolve(quiz); // resolve once the quiz is modified
+                    }
+                  });
+              });
+            })
+          )
+            .then((modifiedQuizzes) => {
+              response.json(modifiedQuizzes); // Respond with modified quizzes
+            })
+            .catch((error) => {
+              console.error("Error modifying quizzes:", error);
+              response.status(500).json({ error: "Internal server error" });
+            });
+        });
+    }
   }
 
   delQuiz(request, response) {

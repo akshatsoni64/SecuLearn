@@ -7,13 +7,17 @@ import {
 import { FlashcardsService } from '../services/flashcards.service';
 import { Flashcard } from '../models/flashcards.models';
 import { CommonModule } from '@angular/common';
-import { MatExpansionModule } from '@angular/material/expansion';
 import { Observable } from 'rxjs';
+import { materialImports, routerImports } from '../common.imports';
 
 @Component({
   selector: 'app-flashcards',
   standalone: true,
-  imports: [CommonModule, MatExpansionModule],
+  imports: [
+    CommonModule,
+    routerImports,
+    materialImports
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './flashcards.component.html',
   styleUrl: './flashcards.component.css',

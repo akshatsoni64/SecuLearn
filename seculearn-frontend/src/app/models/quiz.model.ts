@@ -1,6 +1,6 @@
 export interface Quiz {
-  id: string;
-  topic_id: string;
+  _id: string;
+  topic: string;
   question: string;
   option_1: string;
   option_2: string;
