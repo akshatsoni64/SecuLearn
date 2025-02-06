@@ -1,11 +1,11 @@
 <div style="width: fit-content; margin: 0px auto;">
-    <mat-form-field>
-        <mat-label>Enter Your IP Address</mat-label>
-        <input matInput [(ngModel)]="ip" required/>
-    </mat-form-field>
-    <button mat-raised-button type="submit" (click)="scan()">Scan</button>
+  <mat-form-field>
+    <mat-label>Enter Your IP Address</mat-label>
+    <input matInput [(ngModel)]="ip" required />
+  </mat-form-field>
+  <button mat-raised-button type="submit" (click)="scan()">Scan</button>
 </div>
 
-<div style="width: fit-content; margin: 0px auto;">
-    {{scanResult}}
+<div style="width: 400px; margin: 0px auto;color: greenyellow; background-color: black;">
+  <code [innerHTML]="scanResult"></code>
 </div>

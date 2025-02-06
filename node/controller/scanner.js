@@ -37,7 +37,7 @@ class ScanController {
       .split("\n")
       .map((line) => line.trim())
       .filter((line) => line !== "")
-      .join("\n");
+      .join("<br>");
   }
 }
 module.exports = ScanController;
