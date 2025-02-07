@@ -5,25 +5,6 @@ import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Leaderboard } from '../models/leaderboard.model';
 
-/*
-const users: User[] = [
-  { name: 'Akshat', username: 'akshat', password: 'akshat' },
-  { name: 'Dipen', username: 'dipen', password: 'dipen' },
-  { name: 'Nihar', username: 'nihar', password: 'nihar' },
-];
-
-const results: Result[] = [
-  { question_id: '1', user_id: '0', status: true },
-  { question_id: '2', user_id: '0', status: true },
-  { question_id: '3', user_id: '0', status: true },
-  { question_id: '1', user_id: '1', status: true },
-  { question_id: '2', user_id: '1', status: true },
-  { question_id: '3', user_id: '1', status: false },
-  { question_id: '1', user_id: '2', status: false },
-  { question_id: '2', user_id: '2', status: true },
-  { question_id: '3', user_id: '2', status: false },
-];
-*/
 
 @Injectable({
   providedIn: 'root',
